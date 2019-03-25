@@ -1,0 +1,45 @@
+     <header>
+          <div class="container">
+               {{!-- <img src="{{img/ATHF_Carls_Jr.jpg}}"  alt="burger"> --}}
+               <h1>Eat Da Burger!</h1>
+          </div>
+     </header>
+
+     <section>
+          <div class="flex-container">
+               <div class="burgers-created">
+                    <h3>Burgers to Eat</h3>
+                    {{#each burger_data}}
+                    {{#unless devoured}}
+                         <p class="burger-name">{{id}}. {{burger_name}}</p>
+
+                         <form method="POST"  action="/burger/update?_method=PUT" class="button-size">
+                              <input type="hidden" name="burger_id" type="text" value={{id}}>
+                              
+                              <button type="submit" class="btn btn-secondary">Eat it!</button>
+                         </form>
+                    {{/unless}}
+                    {{/each}}
+               </div>
+
+               <div class="burgers-eaten">
+                    <h3>Burgers eaten</h3>
+               {{#each burger_data}}
+                    {{#if devoured}}
+               <input type="text" class="form-control" placeholder="{{id}}. {{burger_name}}" readonly>
+                    {{/if}}
+               {{/each}}
+               </div>
+          </div>
+     </section>
+
+     <section>
+          <div class="add-burger">
+               <h3>Enter in a burger you would like to eat!</h3>
+               <form action="/burger/create" method="POST">
+                    <input type="text" name="burger_name" class="form-control f-input" value="" id="enter_text"/>                    
+                    <button type="submit" class="btn btn-primary" id="text-enter-button">SUBMIT</button>
+               </form>
+               
+          </div>
+     </section>
