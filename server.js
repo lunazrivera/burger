@@ -1,6 +1,5 @@
 // Requiring dependencies 
 var express = require("express");
-var bodyParser = require("body-Parser");
 var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
 var mysql = require("mysql");
@@ -9,9 +8,6 @@ var mysql = require("mysql");
 var app = express();
 app.use(express.static(__dirname + "public/assets"));
 
-app.use(bodyParser.urlencoded({
-     extended: false
-}))
 // Parse request body as json
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
